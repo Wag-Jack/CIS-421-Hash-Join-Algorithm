@@ -9,22 +9,28 @@ class RelationTable:
         if len(tuple) == self.tuple_size:
             self.table.append(tuple)
 
+    def get_table(self):
+        return self.table
+
     #Size based on number of tuples to conserve memory
     def get_table_size(self):
-        return self.table.size()
+        return len(self.table)
+    
+    def get_identifier(self):
+        return self.variable_identifier
     
     def print_table(self):
         print(f'{self.table_name}:\n|',end='')
         table_size = len(self.table)
-        largest_digit_num = 2
+        largest_digit_num = len(self.variable_identifier) + int(self.tuple_size / 10) + 1
         for i in self.table:
             for j in i:
                 digits = len(str(j)) - 2
                 if digits > largest_digit_num:
                     largest_digit_num = digits
         
-        i = 0
-        while i < table_size:
+        i = 1
+        while i <= table_size:
             print(f'{' ' * (largest_digit_num - 2)}{self.variable_identifier}{i}|',end='')
             i += 1
         print()
@@ -51,7 +57,7 @@ class HashTable:
         else:
             self.table[index].append(value)
 
-    def get(self, key):
+    def get_value(self, key):
         index = self._hash(key)
         value = self.table[index]
         return value if value is not None else None
