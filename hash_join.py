@@ -20,7 +20,7 @@ def build(table, column):
 #Probe method for Hash Join algorithm
 def probe(initialBuild, probe, build, j1, j2):
     #Get the identifiers for the resultant table
-    resultant_size = initialBuild.get_table_size() + probe.get_table_size()
+    resultant_size = initialBuild.get_tuple_size() + probe.get_tuple_size()
     resultant_identifier = initialBuild.get_identifier() + probe.get_identifier()
 
     #Get the name for the resultant table after probing
@@ -72,7 +72,7 @@ def hash_join(R1, R2):
     r2 = R2[0].get_table_size()
 
     #Build table will be the table with less tuples
-    if r1 < r2:
+    if r1 <= r2:
         buildTable = build(R1[0], R1[1])
         return probe(R1[0], R2[0], buildTable, R1[1], R2[1])
     else:

@@ -29,6 +29,10 @@ class RelationTable:
     def get_table_size(self):
         return len(self.table)
     
+    #Getter method for the size of tuples in table
+    def get_tuple_size(self):
+        return self.tuple_size
+
     #Get table's variable identifier
     def get_identifier(self):
         return self.variable_identifier

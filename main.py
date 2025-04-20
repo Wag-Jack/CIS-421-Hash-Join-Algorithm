@@ -3,7 +3,7 @@ from hash_join import hash_join
 import os
 
 #Main driver function for hash join algorithm
-if __name__ == "__main__":
+def main():
     #Directory hosting CSV files for relation data
     data_dir = './data'
 
@@ -29,3 +29,6 @@ if __name__ == "__main__":
 
     #Print resulting tables
     hashJoinedTable.print_table()
+
+if __name__ == '__main__':
+    main()
